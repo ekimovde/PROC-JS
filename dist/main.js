@@ -1,6 +1,6 @@
 "use strict";
 
-var Container = require("./Container");
+var container = require("./Container");
 
 var Reader = require("./Reader");
 
@@ -10,12 +10,11 @@ function main() {
   console.log("Start");
   var writer = new Writer("out.txt");
   writer.writeLine("Start!");
-  var container = new Container();
   var reader = new Reader("in.txt");
-  container["in"](reader);
-  container.out(writer);
+  container.inFile(reader);
+  container.outFile(writer);
   container.clear();
-  container.out(writer);
+  container.outFile(writer);
   writer.writeLine("Stop!");
   console.log("Stop");
   writer.save();
