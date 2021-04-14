@@ -1,39 +1,35 @@
 let SetText = require("./core/SetText");
 import { inFunc } from "./core/inFunc";
 
-class Container {
-  constructor() {
-    this.array = [];
+export let container = {
+  array: [],
+};
+
+export const inFile = (reader) => {
+  while (!reader.fileEmpty()) {
+    let tmp = reader.readLine();
+    let setText = new SetText();
+
+    inFunc(tmp, setText, container.array);
   }
+};
 
-  in(reader) {
-    while (!reader.fileEmpty()) {
-      let tmp = reader.readLine();
-      let setText = new SetText();
+export const getArray = (tmp) => {
+  container.array.push(tmp);
+  return array;
+};
 
-      inFunc(tmp, setText, this.array);
+export const outFile = (writer) => {
+  let c = container.array.length;
+
+  writer.writeLine(`Container contains: ${c}, elements!`);
+
+  if (c > 0)
+    for (let i = 0; i < c; i++) {
+      container.array[i].out(writer);
     }
-  }
+};
 
-  getArray(tmp) {
-    this.array.push(tmp);
-    return this.array;
-  }
-
-  out(writer) {
-    let c = this.array.length;
-
-    writer.writeLine(`Container contains: ${c}, elements!`);
-
-    if (c > 0)
-      for (let i = 0; i < c; i++) {
-        this.array[i].out(writer);
-      }
-  }
-
-  clear() {
-    this.array = [];
-  }
-}
-
-module.exports = Container;
+export const clear = () => {
+  container.array = [];
+};
