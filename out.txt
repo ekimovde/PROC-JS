@@ -1,8 +1,9 @@
 Start!
-Container contains: 4, elements!
+Container contains: 5, elements!
 Text: Абв, Replacement: [А->б]-[б->в]-[в->г], DecodedText: бвг
 Text: abc, Shift: 1, DecodedText: bcd
 Text: Кот, Replacement: [К->Д]-[о->о]-[т->м], DecodedText: Дом
 Text: Кот, Shift: 2, DecodedText: Мрф
+Text: Кот, Replacement: [К->Т]-[о->о]-[т->к], DecodedText: Ток
 Container contains: 0, elements!
 Stop!
