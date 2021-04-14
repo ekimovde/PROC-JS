@@ -1,4 +1,4 @@
-let Container = require("./Container");
+let container = require("./Container");
 let Reader = require("./Reader");
 let Writer = require("./Writer");
 
@@ -9,13 +9,12 @@ function main() {
 
   writer.writeLine("Start!");
 
-  let container = new Container();
   let reader = new Reader("in.txt");
 
-  container.in(reader);
-  container.out(writer);
+  container.inFile(reader);
+  container.outFile(writer);
   container.clear();
-  container.out(writer);
+  container.outFile(writer);
 
   writer.writeLine("Stop!");
 
