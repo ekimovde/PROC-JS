@@ -1,27 +1,17 @@
-const Replacement = require("./Replacement");
-const Shift = require("./Shift");
+import { replaceFunc, shiftFunc } from "../utils/encryption";
 
-export const inFunc = (tmp, setText, array) => {
-  switch (tmp[0]) {
-    case "1":
-      let replacement = new Replacement();
-      replacement.in(tmp.toString().split(" "));
+export const shiftIn = (tmp, shift, text) => {
+  shift.text = text;
+  const { shiftTmp, strEncoded } = shiftFunc(tmp);
 
-      setText = replacement;
-      setText.setText(tmp.split(" ")[1].replace(/\r/g, ""));
-      array.push(replacement);
+  shift.shift = shiftTmp;
+  shift.decodedText = strEncoded;
+};
 
-      break;
-    case "2":
-      let shift = new Shift();
-      shift.in(tmp.toString().split(" "));
+export const replacementIn = (tmp, replacement, text) => {
+  replacement.text = text;
+  const { replaceTmp, replaceText } = replaceFunc(tmp);
 
-      setText = shift;
-      setText.setText(tmp.split(" ")[1]);
-      array.push(shift);
-
-      break;
-    default:
-      return 0;
-  }
+  replacement.replacement = replaceTmp.join("-");
+  replacement.decodedText = replaceText;
 };

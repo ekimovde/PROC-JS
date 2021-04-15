@@ -1,15 +1,11 @@
-class SetText {
-  constructor() {
-    this.text;
-  }
+export let SetText = {
+  text: "",
+};
 
-  setText(text) {
-    this.text = text;
-  }
+export const addText = (text) => {
+  SetText.text = text;
+};
 
-  out(writer) {
-    writer.write(`Text: ${this.text}, `);
-  }
-}
-
-module.exports = SetText;
+export const outSetText = (writer) => {
+  writer.write(`Text: ${this.text}, `);
+};
