@@ -8,15 +8,15 @@ var arr_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 exports.replaceFunc = function (tmp) {
   var text = tmp[1].split("");
   var replaceText = tmp[2].split("").join("");
-  var replacement = [];
+  var replaceTmp = [];
 
   for (var i = 0; i < text.length; i++) {
     var el = "[" + text[i] + "->" + replaceText[i] + "]";
-    replacement.push(el);
+    replaceTmp.push(el);
   }
 
   return {
-    replacement: replacement,
+    replaceTmp: replaceTmp,
     replaceText: replaceText
   };
 };
@@ -24,11 +24,11 @@ exports.replaceFunc = function (tmp) {
 exports.shiftFunc = function (tmp) {
   var text = tmp[1].split("");
   var strEncoded = "";
-  var shift = +tmp[2];
+  var shiftTmp = +tmp[2];
 
   for (var i = 0; i < text.length; i++) {
     if (arr_ru.indexOf(text[i]) !== -1) {
-      var index = arr_ru.indexOf(text[i]) + shift;
+      var index = arr_ru.indexOf(text[i]) + shiftTmp;
       var len = arr_ru.length;
 
       if (index < 0) {
@@ -37,7 +37,7 @@ exports.shiftFunc = function (tmp) {
         strEncoded += arr_ru[index % len];
       }
     } else if (arr_en.indexOf(text[i]) !== -1) {
-      var _index = arr_en.indexOf(text[i]) + shift;
+      var _index = arr_en.indexOf(text[i]) + shiftTmp;
 
       var _len = arr_en.length;
 
@@ -47,7 +47,7 @@ exports.shiftFunc = function (tmp) {
         strEncoded += arr_en[_index % _len];
       }
     } else if (arr_RU.indexOf(text[i]) !== -1) {
-      var _index2 = arr_RU.indexOf(text[i]) + shift;
+      var _index2 = arr_RU.indexOf(text[i]) + shiftTmp;
 
       var _len2 = arr_RU.length;
 
@@ -57,7 +57,7 @@ exports.shiftFunc = function (tmp) {
         strEncoded += arr_RU[_index2 % _len2];
       }
     } else if (arr_EN.indexOf(text[i]) !== -1) {
-      var _index3 = arr_EN.indexOf(text[i]) + shift;
+      var _index3 = arr_EN.indexOf(text[i]) + shiftTmp;
 
       var _len3 = arr_EN.length;
 
@@ -70,7 +70,7 @@ exports.shiftFunc = function (tmp) {
   }
 
   return {
-    shift: shift,
+    shiftTmp: shiftTmp,
     strEncoded: strEncoded
   };
 };

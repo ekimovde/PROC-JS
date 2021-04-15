@@ -1,41 +1,42 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Writer = Writer;
+exports.save = exports.write = exports.writeLine = exports.writerConst = void 0;
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var _fs = _interopRequireDefault(require("fs"));
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var fs = require("fs");
+function Writer(path, string) {
+  this.path = path;
+  this.string = string;
+}
 
-var Writer = /*#__PURE__*/function () {
-  function Writer(path) {
-    _classCallCheck(this, Writer);
+var writerConst = function writerConst(path, writer) {
+  writer.path = path;
+};
 
-    this.path = path;
-    this.string = "";
-  }
+exports.writerConst = writerConst;
 
-  _createClass(Writer, [{
-    key: "writeLine",
-    value: function writeLine(str) {
-      this.string += str + "\n";
-    }
-  }, {
-    key: "write",
-    value: function write(str) {
-      this.string += str;
-    }
-  }, {
-    key: "save",
-    value: function save() {
-      fs.writeFile(this.path, this.string, function (err) {
-        if (err) throw err;
-      });
-    }
-  }]);
+var writeLine = function writeLine(writer, str) {
+  writer.string += str + "\n";
+};
 
-  return Writer;
-}();
+exports.writeLine = writeLine;
 
-module.exports = Writer;
+var write = function write(str, writer) {
+  writer.string += str;
+};
+
+exports.write = write;
+
+var save = function save(writer) {
+  _fs["default"].writeFile(writer.path, writer.string, function (err) {
+    if (err) throw err;
+  });
+};
+
+exports.save = save;

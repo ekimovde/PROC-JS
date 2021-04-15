@@ -1,38 +1,40 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Reader = Reader;
+exports.fileEmpty = exports.readLine = exports.readerConst = void 0;
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var _fs = _interopRequireDefault(require("fs"));
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var fs = require("fs");
+function Reader(path, data, index) {
+  this.path = path;
+  this.data = data;
+  this.index = index;
+}
 
-var Reader = /*#__PURE__*/function () {
-  function Reader(path) {
-    _classCallCheck(this, Reader);
+var readerConst = function readerConst(path, reader) {
+  reader.path = path;
+  reader.data = _fs["default"].readFileSync(path, "utf-8").toString().split("\n");
+  reader.index = 0;
+};
 
-    this.path = path;
-    this.data = fs.readFileSync(path, "utf-8").toString().split("\n");
-    this.index = 0;
-  }
+exports.readerConst = readerConst;
 
-  _createClass(Reader, [{
-    key: "readLine",
-    value: function readLine() {
-      var tmp = this.data[this.index];
-      this.index++;
-      return tmp;
-    }
-  }, {
-    key: "fileEmpty",
-    value: function fileEmpty() {
-      return this.index > this.data.length - 1 ? true : false;
-      s;
-    }
-  }]);
+var readLine = function readLine(reader) {
+  var tmp = reader.data[reader.index];
+  reader.index++;
+  return tmp;
+};
 
-  return Reader;
-}();
+exports.readLine = readLine;
 
-module.exports = Reader;
+var fileEmpty = function fileEmpty(reader) {
+  return reader.index > reader.data.length - 1 ? true : false;
+  s;
+};
+
+exports.fileEmpty = fileEmpty;

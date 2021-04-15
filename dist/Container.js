@@ -3,46 +3,42 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clear = exports.outFile = exports.getArray = exports.inFile = exports.container = void 0;
+exports.containerClear = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
 
-var _inFunc = require("./core/inFunc");
+var _Reader = require("./Reader");
 
-var SetText = require("./core/SetText");
+var _Writer = require("./Writer");
 
-var container = {
-  array: []
+var _funcText = require("./core/funcText");
+
+var containerConst = function containerConst() {
+  var container = [];
+  return container;
 };
-exports.container = container;
 
-var inFile = function inFile(reader) {
-  while (!reader.fileEmpty()) {
-    var tmp = reader.readLine();
-    var setText = new SetText();
-    (0, _inFunc.inFunc)(tmp, setText, container.array);
+exports.containerConst = containerConst;
+
+var containerIn = function containerIn(container, reader) {
+  while (!(0, _Reader.fileEmpty)(reader)) {
+    var tmp = (0, _Reader.readLine)(reader);
+    (0, _funcText.inText)(tmp, container);
   }
 };
 
-exports.inFile = inFile;
+exports.containerIn = containerIn;
 
-var getArray = function getArray(tmp) {
-  container.array.push(tmp);
-  return array;
-};
-
-exports.getArray = getArray;
-
-var outFile = function outFile(writer) {
-  var c = container.array.length;
-  writer.writeLine("Container contains: ".concat(c, ", elements!"));
+var containerOut = function containerOut(container, writer) {
+  var c = container.length;
+  (0, _Writer.writeLine)(writer, "Container contains: ".concat(c, ", elements!"));
   if (c > 0) for (var i = 0; i < c; i++) {
-    container.array[i].out(writer);
+    (0, _funcText.outText)(container, i, writer);
   }
 };
 
-exports.outFile = outFile;
+exports.containerOut = containerOut;
 
-var clear = function clear() {
-  container.array = [];
+var containerClear = function containerClear(container) {
+  container = [];
 };
 
-exports.clear = clear;
+exports.containerClear = containerClear;
