@@ -3,33 +3,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.inFunc = void 0;
+exports.replacementIn = exports.shiftIn = void 0;
 
-var Replacement = require("./Replacement");
+var _encryption = require("../utils/encryption");
 
-var Shift = require("./Shift");
+var shiftIn = function shiftIn(tmp, shift, text) {
+  shift.text = text;
 
-var inFunc = function inFunc(tmp, setText, array) {
-  switch (tmp[0]) {
-    case "1":
-      var replacement = new Replacement();
-      replacement["in"](tmp.toString().split(" "));
-      setText = replacement;
-      setText.setText(tmp.split(" ")[1].replace(/\r/g, ""));
-      array.push(replacement);
-      break;
+  var _shiftFunc = (0, _encryption.shiftFunc)(tmp),
+      shiftTmp = _shiftFunc.shiftTmp,
+      strEncoded = _shiftFunc.strEncoded;
 
-    case "2":
-      var shift = new Shift();
-      shift["in"](tmp.toString().split(" "));
-      setText = shift;
-      setText.setText(tmp.split(" ")[1]);
-      array.push(shift);
-      break;
-
-    default:
-      return 0;
-  }
+  shift.shift = shiftTmp;
+  shift.decodedText = strEncoded;
 };
 
-exports.inFunc = inFunc;
+exports.shiftIn = shiftIn;
+
+var replacementIn = function replacementIn(tmp, replacement, text) {
+  replacement.text = text;
+
+  var _replaceFunc = (0, _encryption.replaceFunc)(tmp),
+      replaceTmp = _replaceFunc.replaceTmp,
+      replaceText = _replaceFunc.replaceText;
+
+  replacement.replacement = replaceTmp.join("-");
+  replacement.decodedText = replaceText;
+};
+
+exports.replacementIn = replacementIn;

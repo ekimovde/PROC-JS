@@ -1,31 +1,25 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.outSetText = exports.addText = exports.SetText = void 0;
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var _this = void 0;
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var SetText = {
+  text: ""
+};
+exports.SetText = SetText;
 
-var SetText = /*#__PURE__*/function () {
-  function SetText() {
-    _classCallCheck(this, SetText);
+var addText = function addText(text) {
+  SetText.text = text;
+};
 
-    this.text;
-  }
+exports.addText = addText;
 
-  _createClass(SetText, [{
-    key: "setText",
-    value: function setText(text) {
-      this.text = text;
-    }
-  }, {
-    key: "out",
-    value: function out(writer) {
-      writer.write("Text: ".concat(this.text, ", "));
-    }
-  }]);
+var outSetText = function outSetText(writer) {
+  writer.write("Text: ".concat(_this.text, ", "));
+};
 
-  return SetText;
-}();
-
-module.exports = SetText;
+exports.outSetText = outSetText;
