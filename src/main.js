@@ -1,26 +1,32 @@
-let container = require("./Container");
-let Reader = require("./Reader");
-let Writer = require("./Writer");
+import {
+  containerIn,
+  containerOut,
+  containerConst,
+  containerClear,
+} from "./Container";
+import { Reader, readerConst } from "./Reader";
+import { Writer, writerConst, writeLine, save } from "./Writer";
 
 function main() {
   console.log("Start");
 
-  let writer = new Writer("out.txt");
+  let writer = new Writer("out.txt", "");
+  writerConst("out.txt", writer);
+  writeLine(writer, "Start!");
 
-  writer.writeLine("Start!");
+  let container = containerConst();
+  let reader = new Reader("in.txt", "", 0);
 
-  let reader = new Reader("in.txt");
+  readerConst("in.txt", reader);
+  containerIn(container, reader);
+  containerOut(container, writer);
+  containerClear(container);
 
-  container.inFile(reader);
-  container.outFile(writer);
-  container.clear();
-  container.outFile(writer);
-
-  writer.writeLine("Stop!");
+  writeLine(writer, "Stop!");
 
   console.log("Stop");
 
-  writer.save();
+  save(writer);
 }
 
 main();

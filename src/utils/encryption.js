@@ -6,15 +6,15 @@ const arr_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 exports.replaceFunc = (tmp) => {
   let text = tmp[1].split("");
   let replaceText = tmp[2].split("").join("");
-  let replacement = [];
+  let replaceTmp = [];
 
   for (let i = 0; i < text.length; i++) {
     let el = "[" + text[i] + "->" + replaceText[i] + "]";
-    replacement.push(el);
+    replaceTmp.push(el);
   }
 
   return {
-    replacement,
+    replaceTmp,
     replaceText,
   };
 };
@@ -22,11 +22,11 @@ exports.replaceFunc = (tmp) => {
 exports.shiftFunc = (tmp) => {
   const text = tmp[1].split("");
   let strEncoded = "";
-  const shift = +tmp[2];
+  const shiftTmp = +tmp[2];
 
   for (let i = 0; i < text.length; i++) {
     if (arr_ru.indexOf(text[i]) !== -1) {
-      let index = arr_ru.indexOf(text[i]) + shift;
+      let index = arr_ru.indexOf(text[i]) + shiftTmp;
       let len = arr_ru.length;
 
       if (index < 0) {
@@ -35,7 +35,7 @@ exports.shiftFunc = (tmp) => {
         strEncoded += arr_ru[index % len];
       }
     } else if (arr_en.indexOf(text[i]) !== -1) {
-      let index = arr_en.indexOf(text[i]) + shift;
+      let index = arr_en.indexOf(text[i]) + shiftTmp;
       let len = arr_en.length;
 
       if (index < 0) {
@@ -44,7 +44,7 @@ exports.shiftFunc = (tmp) => {
         strEncoded += arr_en[index % len];
       }
     } else if (arr_RU.indexOf(text[i]) !== -1) {
-      let index = arr_RU.indexOf(text[i]) + shift;
+      let index = arr_RU.indexOf(text[i]) + shiftTmp;
       let len = arr_RU.length;
 
       if (index < 0) {
@@ -53,7 +53,7 @@ exports.shiftFunc = (tmp) => {
         strEncoded += arr_RU[index % len];
       }
     } else if (arr_EN.indexOf(text[i]) !== -1) {
-      let index = arr_EN.indexOf(text[i]) + shift;
+      let index = arr_EN.indexOf(text[i]) + shiftTmp;
       let len = arr_EN.length;
 
       if (index < 0) {
@@ -65,7 +65,7 @@ exports.shiftFunc = (tmp) => {
   }
 
   return {
-    shift,
+    shiftTmp,
     strEncoded,
   };
 };

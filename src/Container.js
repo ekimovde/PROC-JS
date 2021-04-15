@@ -1,35 +1,30 @@
-let SetText = require("./core/SetText");
-import { inFunc } from "./core/inFunc";
+import { readLine, fileEmpty } from "./Reader";
+import { writeLine } from "./Writer";
+import { inText, outText } from "./core/funcText";
 
-export let container = {
-  array: [],
+export const containerConst = () => {
+  let container = [];
+
+  return container;
 };
 
-export const inFile = (reader) => {
-  while (!reader.fileEmpty()) {
-    let tmp = reader.readLine();
-    let setText = new SetText();
-
-    inFunc(tmp, setText, container.array);
+export const containerIn = (container, reader) => {
+  while (!fileEmpty(reader)) {
+    let tmp = readLine(reader);
+    inText(tmp, container);
   }
 };
 
-export const getArray = (tmp) => {
-  container.array.push(tmp);
-  return array;
-};
-
-export const outFile = (writer) => {
-  let c = container.array.length;
-
-  writer.writeLine(`Container contains: ${c}, elements!`);
+export const containerOut = (container, writer) => {
+  let c = container.length;
+  writeLine(writer, `Container contains: ${c}, elements!`);
 
   if (c > 0)
     for (let i = 0; i < c; i++) {
-      container.array[i].out(writer);
+      outText(container, i, writer);
     }
 };
 
-export const clear = () => {
-  container.array = [];
+export const containerClear = (container) => {
+  container = [];
 };

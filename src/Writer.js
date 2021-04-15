@@ -1,24 +1,24 @@
-let fs = require("fs");
+import fs from "fs";
 
-class Writer {
-  constructor(path) {
-    this.path = path;
-    this.string = "";
-  }
-
-  writeLine(str) {
-    this.string += str + "\n";
-  }
-
-  write(str) {
-    this.string += str;
-  }
-
-  save() {
-    fs.writeFile(this.path, this.string, (err) => {
-      if (err) throw err;
-    });
-  }
+export function Writer(path, string) {
+  this.path = path;
+  this.string = string;
 }
 
-module.exports = Writer;
+export const writerConst = (path, writer) => {
+  writer.path = path;
+};
+
+export const writeLine = (writer, str) => {
+  writer.string += str + "\n";
+};
+
+export const write = (str, writer) => {
+  writer.string += str;
+};
+
+export const save = (writer) => {
+  fs.writeFile(writer.path, writer.string, (err) => {
+    if (err) throw err;
+  });
+};

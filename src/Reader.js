@@ -1,23 +1,25 @@
-let fs = require("fs");
+import fs from "fs";
 
-class Reader {
-  constructor(path) {
-    this.path = path;
-    this.data = fs.readFileSync(path, "utf-8").toString().split("\n");
-    this.index = 0;
-  }
-
-  readLine() {
-    let tmp = this.data[this.index];
-    this.index++;
-
-    return tmp;
-  }
-
-  fileEmpty() {
-    return this.index > this.data.length - 1 ? true : false;
-    s;
-  }
+export function Reader(path, data, index) {
+  this.path = path;
+  this.data = data;
+  this.index = index;
 }
 
-module.exports = Reader;
+export const readerConst = (path, reader) => {
+  reader.path = path;
+  reader.data = fs.readFileSync(path, "utf-8").toString().split("\n");
+  reader.index = 0;
+};
+
+export const readLine = (reader) => {
+  let tmp = reader.data[reader.index];
+  reader.index++;
+
+  return tmp;
+};
+
+export const fileEmpty = (reader) => {
+  return reader.index > reader.data.length - 1 ? true : false;
+  s;
+};
