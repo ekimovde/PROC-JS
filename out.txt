@@ -1,7 +1,7 @@
 Start!
 Container contains: 4, elements!
-Text: Абв Replacement: [А->s]-[б->a]-[в->d], DecodedText: sad
-Text: abc Shift: 2, DecodedText: cde
-Text: qwe Replacement: [q->r]-[w->t]-[e->y], DecodedText: rty
-Text: fg Shift: 10, DecodedText: pq
+Text: Абв, Replacement: [А->s]-[б->a]-[в->d], DecodedText: sad
+Text: abc, Shift: 2, DecodedText: cde
+Text: qwe, Replacement: [q->r]-[w->t]-[e->y], DecodedText: rty
+Text: fg, Shift: 10, DecodedText: pq
 Stop!
