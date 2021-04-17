@@ -21,10 +21,18 @@ export const containerOut = (container, writer) => {
 
   if (c > 0)
     for (let i = 0; i < c; i++) {
-      outText(container, i, writer);
+      if (containerFilter(container, i)) {
+        outText(container, i, writer);
+      }
     }
 };
 
 export const containerClear = (container) => {
   container = [];
+};
+
+export const containerFilter = (container, i) => {
+  if (Object.keys(container[i])[1] === "replacement") {
+    return true;
+  }
 };

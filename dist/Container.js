@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.containerClear = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
+exports.containerFilter = exports.containerClear = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
 
 var _Reader = require("./Reader");
 
@@ -31,7 +31,9 @@ var containerOut = function containerOut(container, writer) {
   var c = container.length;
   (0, _Writer.writeLine)(writer, "Container contains: ".concat(c, ", elements!"));
   if (c > 0) for (var i = 0; i < c; i++) {
-    (0, _funcText.outText)(container, i, writer);
+    if (containerFilter(container, i)) {
+      (0, _funcText.outText)(container, i, writer);
+    }
   }
 };
 
@@ -42,3 +44,11 @@ var containerClear = function containerClear(container) {
 };
 
 exports.containerClear = containerClear;
+
+var containerFilter = function containerFilter(container, i) {
+  if (Object.keys(container[i])[1] === "replacement") {
+    return true;
+  }
+};
+
+exports.containerFilter = containerFilter;
