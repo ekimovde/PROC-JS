@@ -1,8 +1,8 @@
 Start!
 Container contains: 5, elements!
-Text: Абв, Name: denis, Length: 3, Replacement: [А->s]-[б->a]-[в->d], DecodedText: sad
-Text: abc, Name: vlad, Length: 3, Shift: 2, DecodedText: cde
 Text: qwe, Name: denis, Length: 3, Replacement: [q->r]-[w->t]-[e->y], DecodedText: rty
-Text: fg, Name: vadim, Length: 2, Shift: 10, DecodedText: pq
+Text: abc, Name: vlad, Length: 3, Shift: 2, DecodedText: cde
+Text: Абв, Name: denis, Length: 3, Replacement: [А->s]-[б->a]-[в->d], DecodedText: sad
 Text: sa, Name: cats, Length: 2, ReplaceNumber: [s->3]-[a->4], DecodedText: 34
+Text: fg, Name: vadim, Length: 2, Shift: 10, DecodedText: pq
 Stop!
