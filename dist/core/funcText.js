@@ -9,6 +9,8 @@ var _Replacement = _interopRequireDefault(require("./Replacement"));
 
 var _Shift = _interopRequireDefault(require("./Shift"));
 
+var _ReplaceNumber = _interopRequireDefault(require("./ReplaceNumber"));
+
 var _inFunc = require("./inFunc");
 
 var _outFunc = require("./outFunc");
@@ -29,6 +31,12 @@ var inText = function inText(tmp, container) {
       container.push(shift);
       break;
 
+    case "3":
+      var replaceNumber = new _ReplaceNumber["default"]();
+      (0, _inFunc.replaceNumberIn)(tmp.toString().split(" "), replaceNumber, tmp.split(" ")[1].replace(/\r/g, ""));
+      container.push(replaceNumber);
+      break;
+
     default:
       return 0;
   }
@@ -46,6 +54,10 @@ var outText = function outText(container, i, writer) {
 
     case "shift":
       (0, _outFunc.shiftOut)(container, i, writer);
+      break;
+
+    case "replaceNumber":
+      (0, _outFunc.replaceNumberOut)(container, i, writer);
       break;
 
     default:
