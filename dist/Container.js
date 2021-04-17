@@ -3,13 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.containerClear = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
+exports.containerClear = exports.containerSort = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
 
 var _Reader = require("./Reader");
 
 var _Writer = require("./Writer");
 
 var _funcText = require("./core/funcText");
+
+var _compare = require("./utils/compare");
 
 var containerConst = function containerConst() {
   var container = [];
@@ -36,6 +38,18 @@ var containerOut = function containerOut(container, writer) {
 };
 
 exports.containerOut = containerOut;
+
+var containerSort = function containerSort(container) {
+  container.sort(function (a, b) {
+    if ((0, _compare.compare)(a.text, b.text)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+};
+
+exports.containerSort = containerSort;
 
 var containerClear = function containerClear(container) {
   container = [];

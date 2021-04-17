@@ -1,6 +1,7 @@
 import { readLine, fileEmpty } from "./Reader";
 import { writeLine } from "./Writer";
 import { inText, outText } from "./core/funcText";
+import { compare } from "./utils/compare";
 
 export const containerConst = () => {
   let container = [];
@@ -23,6 +24,16 @@ export const containerOut = (container, writer) => {
     for (let i = 0; i < c; i++) {
       outText(container, i, writer);
     }
+};
+
+export const containerSort = (container) => {
+  container.sort((a, b) => {
+    if (compare(a.text, b.text)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 };
 
 export const containerClear = (container) => {
