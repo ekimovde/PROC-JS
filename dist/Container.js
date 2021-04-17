@@ -1,12 +1,9 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
-
-exports.containerClear = exports.containerSort = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
-
-exports.containerFilter = exports.containerClear = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
+exports.containerFilter = exports.containerClear = exports.containerSort = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
 
 var _Reader = require("./Reader");
 
@@ -34,16 +31,12 @@ exports.containerIn = containerIn;
 
 var containerOut = function containerOut(container, writer) {
   var c = container.length;
-  (0, _Writer.writeLine)(
-    writer,
-    "Container contains: ".concat(c, ", elements!")
-  );
-  if (c > 0)
-    for (var i = 0; i < c; i++) {
-      if (containerFilter(container, i)) {
-        (0, _funcText.outText)(container, i, writer);
-      }
+  (0, _Writer.writeLine)(writer, "Container contains: ".concat(c, ", elements!"));
+  if (c > 0) for (var i = 0; i < c; i++) {
+    if (containerFilter(container, i)) {
+      (0, _funcText.outText)(container, i, writer);
     }
+  }
 };
 
 exports.containerOut = containerOut;
