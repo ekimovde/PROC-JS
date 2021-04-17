@@ -1,7 +1,9 @@
 Start!
-Container contains: 4, elements!
+Container contains: 6, elements!
 Text: Абв, Replacement: [А->s]-[б->a]-[в->d], DecodedText: sad
 Text: abc, Shift: 2, DecodedText: cde
+Text: fg, ReplaceNumber: [f->9]-[g->8], DecodedText: 98
 Text: qwe, Replacement: [q->r]-[w->t]-[e->y], DecodedText: rty
 Text: fg, Shift: 10, DecodedText: pq
+Text: asd, ReplaceNumber: [a->1]-[s->2]-[d->3], DecodedText: 123
 Stop!
