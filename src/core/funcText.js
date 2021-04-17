@@ -1,8 +1,9 @@
 import Replacement from "./Replacement";
 import Shift from "./Shift";
+import ReplaceNumber from "./ReplaceNumber";
 
-import { replacementIn, shiftIn } from "./inFunc";
-import { replaceOut, shiftOut } from "./outFunc";
+import { replacementIn, shiftIn, replaceNumberIn } from "./inFunc";
+import { replaceOut, shiftOut, replaceNumberOut } from "./outFunc";
 
 export const inText = (tmp, container) => {
   switch (tmp[0]) {
@@ -22,7 +23,20 @@ export const inText = (tmp, container) => {
       let shift = new Shift();
 
       shiftIn(tmp.toString().split(" "), shift, tmp.split(" ")[1]);
+
       container.push(shift);
+
+      break;
+    case "3":
+      let replaceNumber = new ReplaceNumber();
+
+      replaceNumberIn(
+        tmp.toString().split(" "),
+        replaceNumber,
+        tmp.split(" ")[1].replace(/\r/g, "")
+      );
+
+      container.push(replaceNumber);
 
       break;
     default:
@@ -40,6 +54,10 @@ export const outText = (container, i, writer) => {
       break;
     case "shift":
       shiftOut(container, i, writer);
+
+      break;
+    case "replaceNumber":
+      replaceNumberOut(container, i, writer);
 
       break;
     default:

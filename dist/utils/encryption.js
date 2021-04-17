@@ -74,3 +74,19 @@ exports.shiftFunc = function (tmp) {
     strEncoded: strEncoded
   };
 };
+
+exports.replaceNumberFunc = function (tmp) {
+  var text = tmp[1].split("");
+  var replaceText = tmp[2].split("").join("");
+  var replaceTmp = [];
+
+  for (var i = 0; i < text.length; i++) {
+    var el = "[" + text[i] + "->" + replaceText[i] + "]";
+    replaceTmp.push(el);
+  }
+
+  return {
+    replaceTmp: replaceTmp,
+    replaceText: replaceText
+  };
+};
