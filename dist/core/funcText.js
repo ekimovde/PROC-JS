@@ -33,7 +33,7 @@ var inText = function inText(tmp, container) {
 
     case "3":
       var replaceNumber = new _ReplaceNumber["default"]();
-      (0, _inFunc.replaceNumberIn)(tmp.toString().split(" "), replaceNumber, tmp.split(" ")[1].replace(/\r/g, ""));
+      (0, _inFunc.replaceNumberIn)(tmp.toString().split(" "), replaceNumber, tmp.split(" ")[1].replace(/\r/g, ""), tmp.split(" ")[3].replace(/\r/g, ""));
       container.push(replaceNumber);
       break;
 

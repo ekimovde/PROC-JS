@@ -18,11 +18,11 @@ export const shiftIn = (tmp, shift, text, name) => {
   shift.name = name;
 };
 
-export const replacementIn = (tmp, replacement, text, name) => {
+export const replaceNumberIn = (tmp, replacement, text, name) => {
   replacement.text = text;
   const { replaceTmp, replaceText } = replaceFunc(tmp);
 
-  replacement.replacement = replaceTmp.join("-");
+  replacement.replaceNumber = replaceTmp.join("-");
   replacement.decodedText = replaceText;
   replacement.name = name;
 };
