@@ -13,7 +13,8 @@ export const inText = (tmp, container) => {
       replacementIn(
         tmp.toString().split(" "),
         replacement,
-        tmp.split(" ")[1].replace(/\r/g, "")
+        tmp.split(" ")[1].replace(/\r/g, ""),
+        tmp.split(" ")[3].replace(/\r/g, "")
       );
 
       container.push(replacement);
@@ -22,8 +23,12 @@ export const inText = (tmp, container) => {
     case "2":
       let shift = new Shift();
 
-      shiftIn(tmp.toString().split(" "), shift, tmp.split(" ")[1]);
-
+      shiftIn(
+        tmp.toString().split(" "),
+        shift,
+        tmp.split(" ")[1],
+        tmp.split(" ")[3].replace(/\r/g, "")
+      );
       container.push(shift);
 
       break;
@@ -33,7 +38,8 @@ export const inText = (tmp, container) => {
       replaceNumberIn(
         tmp.toString().split(" "),
         replaceNumber,
-        tmp.split(" ")[1].replace(/\r/g, "")
+        tmp.split(" ")[1].replace(/\r/g, ""),
+        tmp.split(" ")[3].replace(/\r/g, "")
       );
 
       container.push(replaceNumber);

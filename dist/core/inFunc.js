@@ -29,6 +29,7 @@ var shiftIn = function shiftIn(tmp, shift, text) {
 
   shift.shift = shiftTmp;
   shift.decodedText = strEncoded;
+  shift.name = name;
 };
 
 exports.shiftIn = shiftIn;

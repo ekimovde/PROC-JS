@@ -1,25 +1,28 @@
 import { replaceFunc, shiftFunc, replaceNumberFunc } from "../utils/encryption";
 
-export const replacementIn = (tmp, replacement, text) => {
+export const replacementIn = (tmp, replacement, text, name) => {
   replacement.text = text;
   const { replaceTmp, replaceText } = replaceFunc(tmp);
 
   replacement.replacement = replaceTmp.join("-");
   replacement.decodedText = replaceText;
+  replacement.name = name;
 };
 
-export const shiftIn = (tmp, shift, text) => {
+export const shiftIn = (tmp, shift, text, name) => {
   shift.text = text;
   const { shiftTmp, strEncoded } = shiftFunc(tmp);
 
   shift.shift = shiftTmp;
   shift.decodedText = strEncoded;
+  shift.name = name;
 };
 
-export const replaceNumberIn = (tmp, replaceNumber, text) => {
-  replaceNumber.text = text;
-  const { replaceTmp, replaceText } = replaceNumberFunc(tmp);
+export const replacementIn = (tmp, replacement, text, name) => {
+  replacement.text = text;
+  const { replaceTmp, replaceText } = replaceFunc(tmp);
 
-  replaceNumber.replaceNumber = replaceTmp.join("-");
-  replaceNumber.decodedText = replaceText;
+  replacement.replacement = replaceTmp.join("-");
+  replacement.decodedText = replaceText;
+  replacement.name = name;
 };

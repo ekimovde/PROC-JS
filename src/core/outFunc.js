@@ -6,7 +6,7 @@ export const replaceOut = (container, i, writer) => {
 
   writeLine(
     writer,
-    `Text: ${container[i].text}, Length: ${length}, Replacement: ${container[i].replacement}, DecodedText: ${container[i].decodedText}`
+    `Text: ${container[i].text}, Name: ${container[i].name}, Length: ${length}, Replacement: ${container[i].replacement}, DecodedText: ${container[i].decodedText}`
   );
 };
 
@@ -15,7 +15,7 @@ export const shiftOut = (container, i, writer) => {
 
   writeLine(
     writer,
-    `Text: ${container[i].text}, Length: ${length}, Shift: ${container[i].shift}, DecodedText: ${container[i].decodedText}`
+    `Text: ${container[i].text}, Name: ${container[i].name}, Length: ${length}, Shift: ${container[i].shift}, DecodedText: ${container[i].decodedText}`
   );
 };
 
@@ -24,6 +24,6 @@ export const replaceNumberOut = (container, i, writer) => {
 
   writeLine(
     writer,
-    `Text: ${container[i].text}, Length: ${length}, ReplaceNumber: ${container[i].replaceNumber}, DecodedText: ${container[i].decodedText}`
+    `Text: ${container[i].text}, Name: ${container[i].name}, Length: ${length}, ReplaceNumber: ${container[i].replaceNumber}, DecodedText: ${container[i].decodedText}`
   );
 };

@@ -21,13 +21,13 @@ var inText = function inText(tmp, container) {
   switch (tmp[0]) {
     case "1":
       var replacement = new _Replacement["default"]();
-      (0, _inFunc.replacementIn)(tmp.toString().split(" "), replacement, tmp.split(" ")[1].replace(/\r/g, ""));
+      (0, _inFunc.replacementIn)(tmp.toString().split(" "), replacement, tmp.split(" ")[1].replace(/\r/g, ""), tmp.split(" ")[3].replace(/\r/g, ""));
       container.push(replacement);
       break;
 
     case "2":
       var shift = new _Shift["default"]();
-      (0, _inFunc.shiftIn)(tmp.toString().split(" "), shift, tmp.split(" ")[1]);
+      (0, _inFunc.shiftIn)(tmp.toString().split(" "), shift, tmp.split(" ")[1], tmp.split(" ")[3].replace(/\r/g, ""));
       container.push(shift);
       break;
 
