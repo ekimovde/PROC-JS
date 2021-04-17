@@ -7,7 +7,7 @@ exports.replacementIn = exports.shiftIn = void 0;
 
 var _encryption = require("../utils/encryption");
 
-var shiftIn = function shiftIn(tmp, shift, text) {
+var shiftIn = function shiftIn(tmp, shift, text, name) {
   shift.text = text;
 
   var _shiftFunc = (0, _encryption.shiftFunc)(tmp),
@@ -16,11 +16,12 @@ var shiftIn = function shiftIn(tmp, shift, text) {
 
   shift.shift = shiftTmp;
   shift.decodedText = strEncoded;
+  shift.name = name;
 };
 
 exports.shiftIn = shiftIn;
 
-var replacementIn = function replacementIn(tmp, replacement, text) {
+var replacementIn = function replacementIn(tmp, replacement, text, name) {
   replacement.text = text;
 
   var _replaceFunc = (0, _encryption.replaceFunc)(tmp),
@@ -29,6 +30,7 @@ var replacementIn = function replacementIn(tmp, replacement, text) {
 
   replacement.replacement = replaceTmp.join("-");
   replacement.decodedText = replaceText;
+  replacement.name = name;
 };
 
 exports.replacementIn = replacementIn;
