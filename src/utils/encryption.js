@@ -69,3 +69,19 @@ exports.shiftFunc = (tmp) => {
     strEncoded,
   };
 };
+
+exports.replaceNumberFunc = (tmp) => {
+  let text = tmp[1].split("");
+  let replaceText = tmp[2].split("").join("");
+  let replaceTmp = [];
+
+  for (let i = 0; i < text.length; i++) {
+    let el = "[" + text[i] + "->" + replaceText[i] + "]";
+    replaceTmp.push(el);
+  }
+
+  return {
+    replaceTmp,
+    replaceText,
+  };
+};
