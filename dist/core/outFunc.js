@@ -24,7 +24,8 @@ var shiftOut = function shiftOut(container, i, writer) {
 exports.shiftOut = shiftOut;
 
 var replaceNumberOut = function replaceNumberOut(container, i, writer) {
-  (0, _Writer.writeLine)(writer, "Text: ".concat(container[i].text, ", ReplaceNumber: ").concat(container[i].replaceNumber, ", DecodedText: ").concat(container[i].decodedText));
+  var length = (0, _funcLengthText.funcLengthText)(container[i].text);
+  (0, _Writer.writeLine)(writer, "Text: ".concat(container[i].text, ", Length: ").concat(length, ", ReplaceNumber: ").concat(container[i].replaceNumber, ", DecodedText: ").concat(container[i].decodedText));
 };
 
 exports.replaceNumberOut = replaceNumberOut;

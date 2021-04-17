@@ -20,8 +20,10 @@ export const shiftOut = (container, i, writer) => {
 };
 
 export const replaceNumberOut = (container, i, writer) => {
+  let length = funcLengthText(container[i].text);
+
   writeLine(
     writer,
-    `Text: ${container[i].text}, ReplaceNumber: ${container[i].replaceNumber}, DecodedText: ${container[i].decodedText}`
+    `Text: ${container[i].text}, Length: ${length}, ReplaceNumber: ${container[i].replaceNumber}, DecodedText: ${container[i].decodedText}`
   );
 };
