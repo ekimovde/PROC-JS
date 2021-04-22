@@ -22,6 +22,16 @@ export const containerOut = (container, writer) => {
 
   if (c > 0)
     for (let i = 0; i < c; i++) {
+      outText(container, i, writer);
+    }
+};
+
+export const containerOutReplacement = (container, writer) => {
+  let c = container.length;
+  writeLine(writer, `Container contains: ${c}, elements!`);
+
+  if (c > 0)
+    for (let i = 0; i < c; i++) {
       if (containerFilter(container, i)) {
         outText(container, i, writer);
       }

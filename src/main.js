@@ -1,9 +1,10 @@
 import {
   containerIn,
   containerOut,
+  containerOutReplacement,
   containerConst,
   containerClear,
-  containerSort
+  containerSort,
 } from "./Container";
 import { Reader, readerConst } from "./Reader";
 import { Writer, writerConst, writeLine, save } from "./Writer";
@@ -20,8 +21,10 @@ function main() {
 
   readerConst("in.txt", reader);
   containerIn(container, reader);
-  containerSort(container)
   containerOut(container, writer);
+  containerSort(container);
+  containerOut(container, writer);
+  containerOutReplacement(container, writer);
   containerClear(container);
 
   writeLine(writer, "Stop!");
