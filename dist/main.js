@@ -13,16 +13,21 @@ function main() {
   (0, _Writer.writeLine)(writer, "Start!");
   var container = (0, _Container.containerConst)();
   var reader = new _Reader.Reader("in.txt", "", 0);
-  (0, _Reader.readerConst)("in.txt", reader);
-  (0, _Container.containerIn)(container, reader);
-  (0, _Container.containerOut)(container, writer);
-  (0, _Container.containerSort)(container);
-  (0, _Container.containerOut)(container, writer);
-  (0, _Container.containerOutReplacement)(container, writer);
-  (0, _Container.containerClear)(container);
-  (0, _Writer.writeLine)(writer, "Stop!");
-  console.log("Stop");
-  (0, _Writer.save)(writer);
+
+  try {
+    (0, _Reader.readerConst)("in.txt", reader);
+    (0, _Container.containerIn)(container, reader);
+    (0, _Container.containerOut)(container, writer);
+    (0, _Container.containerSort)(container);
+    (0, _Container.containerOut)(container, writer);
+    (0, _Container.containerOutReplacement)(container, writer);
+    (0, _Container.containerClear)(container);
+    (0, _Writer.writeLine)(writer, "Stop!");
+    console.log("Stop");
+    (0, _Writer.save)(writer);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 main();
