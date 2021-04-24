@@ -13,6 +13,8 @@ var _funcText = require("./core/funcText");
 
 var _compare = require("./utils/compare");
 
+var _validate = require("./utils/validate");
+
 var containerConst = function containerConst() {
   var container = [];
   return container;
@@ -23,7 +25,12 @@ exports.containerConst = containerConst;
 var containerIn = function containerIn(container, reader) {
   while (!(0, _Reader.fileEmpty)(reader)) {
     var tmp = (0, _Reader.readLine)(reader);
-    (0, _funcText.inText)(tmp, container);
+
+    if ((0, _validate.validate)(tmp)) {
+      (0, _funcText.inText)(tmp, container);
+    } else {
+      console.log("Ошибка в файле!");
+    }
   }
 };
 

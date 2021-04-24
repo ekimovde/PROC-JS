@@ -19,19 +19,23 @@ function main() {
   let container = containerConst();
   let reader = new Reader("in.txt", "", 0);
 
-  readerConst("in.txt", reader);
-  containerIn(container, reader);
-  containerOut(container, writer);
-  containerSort(container);
-  containerOut(container, writer);
-  containerOutReplacement(container, writer);
-  containerClear(container);
+  try {
+    readerConst("in.txt", reader);
+    containerIn(container, reader);
+    containerOut(container, writer);
+    containerSort(container);
+    containerOut(container, writer);
+    containerOutReplacement(container, writer);
+    containerClear(container);
 
-  writeLine(writer, "Stop!");
+    writeLine(writer, "Stop!");
 
-  console.log("Stop");
+    console.log("Stop");
 
-  save(writer);
+    save(writer);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 main();

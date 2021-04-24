@@ -2,6 +2,7 @@ import { readLine, fileEmpty } from "./Reader";
 import { writeLine } from "./Writer";
 import { inText, outText } from "./core/funcText";
 import { compare } from "./utils/compare";
+import { validate } from "./utils/validate";
 
 export const containerConst = () => {
   let container = [];
@@ -12,7 +13,12 @@ export const containerConst = () => {
 export const containerIn = (container, reader) => {
   while (!fileEmpty(reader)) {
     let tmp = readLine(reader);
-    inText(tmp, container);
+
+    if (validate(tmp)) {
+      inText(tmp, container);
+    } else {
+      console.log("Ошибка в файле!");
+    }
   }
 };
 
