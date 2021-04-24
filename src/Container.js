@@ -16,6 +16,8 @@ export const containerIn = (container, reader) => {
 
     if (validate(tmp)) {
       inText(tmp, container);
+    } else {
+      console.log("Ошибка в файле!");
     }
   }
 };

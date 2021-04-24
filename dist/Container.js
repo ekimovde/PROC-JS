@@ -28,6 +28,8 @@ var containerIn = function containerIn(container, reader) {
 
     if ((0, _validate.validate)(tmp)) {
       (0, _funcText.inText)(tmp, container);
+    } else {
+      console.log("Ошибка в файле!");
     }
   }
 };
