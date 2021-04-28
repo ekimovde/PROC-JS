@@ -3,6 +3,7 @@ import { writeLine } from "./Writer";
 import { inText, outText } from "./core/funcText";
 import { compare } from "./utils/compare";
 import { validate } from "./utils/validate";
+import { replaceOut, shiftOut, replaceNumberOut } from "./core/outFunc";
 
 export const containerConst = () => {
   let container = [];
@@ -71,29 +72,102 @@ export const containerMultiMethod = (container, writer) => {
   for (let i = 0; i < c - 1; i++) {
     for (let j = i + 1; j < c; j++) {
       switch (Object.keys(container[i])[1]) {
-        case "shift":
+        case "replacement":
           switch (Object.keys(container[j])[1]) {
-            case "shift":
-              writeLine(writer, `Are Shift and Shift`);
-              break;
             case "replacement":
-              writeLine(writer, `Are Shift and Replacement`);
+              replaceOut(container, i, writer);
+              replaceOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are Replacement and Replacement`
+              );
+              break;
+            case "shift":
+              replaceOut(container, i, writer);
+              shiftOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are Replacement and Shift`
+              );
+              break;
+            case "replaceNumber":
+              replaceOut(container, i, writer);
+              replaceNumberOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are Replacement and ReplaceNumber`
+              );
               break;
             default:
-              writeLine(writer, `Are Unknown type`);
+              writeLine(writer, `Element ${i} and ${j} Are Unknown type`);
           }
           break;
 
-        case "replacement":
+        case "shift":
           switch (Object.keys(container[j])[1]) {
-            case "shift":
-              writeLine(writer, `Are Replacement and Shift`);
-              break;
             case "replacement":
-              writeLine(writer, `Are Replacement and Replacement`);
+              shiftOut(container, i, writer);
+              replaceOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are Shift and Replacement`
+              );
+              break;
+            case "shift":
+              shiftOut(container, i, writer);
+              shiftOut(container, j, writer);
+
+              writeLine(writer, `Element ${i} and ${j} Are Shift and Shift`);
+              break;
+            case "replaceNumber":
+              shiftOut(container, i, writer);
+              replaceNumberOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are Shift and ReplaceNumber`
+              );
               break;
             default:
-              writeLine(writer, `Are Unknown type`);
+              writeLine(writer, `Element ${i} and ${j} Are Unknown type`);
+          }
+          break;
+
+        case "replaceNumber":
+          switch (Object.keys(container[j])[1]) {
+            case "replacement":
+              replaceNumberOut(container, i, writer);
+              replaceOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are ReplaceNumber and Replacement`
+              );
+              break;
+            case "shift":
+              replaceNumberOut(container, i, writer);
+              shiftOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are ReplaceNumber and Shift`
+              );
+              break;
+            case "replaceNumber":
+              replaceNumberOut(container, i, writer);
+              replaceNumberOut(container, j, writer);
+
+              writeLine(
+                writer,
+                `Element ${i} and ${j} Are ReplaceNumber and ReplaceNumber`
+              );
+              break;
+            default:
+              writeLine(writer, `Element ${i} and ${j} Are Unknown type`);
           }
           break;
       }

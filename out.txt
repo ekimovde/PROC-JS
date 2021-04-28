@@ -15,13 +15,34 @@ Container contains: 5, elements!
 Text: Коd, Name: Dog, Length: 3, Replacement: [К->Д]-[о->о]-[d->d], DecodedText: Доd
 Text: Аб, Name: Vlad, Length: 2, Replacement: [А->б]-[б->а], DecodedText: ба
 MultiMethod
-Are Shift and Replacement
-Are Shift and Replacement
-Are Unknown type
-Are Unknown type
-Are Replacement and Replacement
-Are Unknown type
-Are Unknown type
-Are Unknown type
-Are Unknown type
+Text: Кот, Name: Vadim, Length: 3, Shift: 2, DecodedText: Мрф
+Text: Коd, Name: Dog, Length: 3, Replacement: [К->Д]-[о->о]-[d->d], DecodedText: Доd
+Element 0 and 1 Are Shift and Replacement
+Text: Кот, Name: Vadim, Length: 3, Shift: 2, DecodedText: Мрф
+Text: Аб, Name: Vlad, Length: 2, Replacement: [А->б]-[б->а], DecodedText: ба
+Element 0 and 2 Are Shift and Replacement
+Text: Кот, Name: Vadim, Length: 3, Shift: 2, DecodedText: Мрф
+Text: гl, Name: Denis, Length: 2, ReplaceNumber: [г->5]-[l->3], DecodedText: 53
+Element 0 and 3 Are Shift and ReplaceNumber
+Text: Кот, Name: Vadim, Length: 3, Shift: 2, DecodedText: Мрф
+Text: Ж, Name: Cat, Length: 1, ReplaceNumber: [Ж->1], DecodedText: 1
+Element 0 and 4 Are Shift and ReplaceNumber
+Text: Коd, Name: Dog, Length: 3, Replacement: [К->Д]-[о->о]-[d->d], DecodedText: Доd
+Text: Аб, Name: Vlad, Length: 2, Replacement: [А->б]-[б->а], DecodedText: ба
+Element 1 and 2 Are Replacement and Replacement
+Text: Коd, Name: Dog, Length: 3, Replacement: [К->Д]-[о->о]-[d->d], DecodedText: Доd
+Text: гl, Name: Denis, Length: 2, ReplaceNumber: [г->5]-[l->3], DecodedText: 53
+Element 1 and 3 Are Replacement and ReplaceNumber
+Text: Коd, Name: Dog, Length: 3, Replacement: [К->Д]-[о->о]-[d->d], DecodedText: Доd
+Text: Ж, Name: Cat, Length: 1, ReplaceNumber: [Ж->1], DecodedText: 1
+Element 1 and 4 Are Replacement and ReplaceNumber
+Text: Аб, Name: Vlad, Length: 2, Replacement: [А->б]-[б->а], DecodedText: ба
+Text: гl, Name: Denis, Length: 2, ReplaceNumber: [г->5]-[l->3], DecodedText: 53
+Element 2 and 3 Are Replacement and ReplaceNumber
+Text: Аб, Name: Vlad, Length: 2, Replacement: [А->б]-[б->а], DecodedText: ба
+Text: Ж, Name: Cat, Length: 1, ReplaceNumber: [Ж->1], DecodedText: 1
+Element 2 and 4 Are Replacement and ReplaceNumber
+Text: гl, Name: Denis, Length: 2, ReplaceNumber: [г->5]-[l->3], DecodedText: 53
+Text: Ж, Name: Cat, Length: 1, ReplaceNumber: [Ж->1], DecodedText: 1
+Element 3 and 4 Are ReplaceNumber and ReplaceNumber
 Stop!

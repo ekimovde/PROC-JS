@@ -15,6 +15,8 @@ var _compare = require("./utils/compare");
 
 var _validate = require("./utils/validate");
 
+var _outFunc = require("./core/outFunc");
+
 var containerConst = function containerConst() {
   var container = [];
   return container;
@@ -91,34 +93,80 @@ var containerMultiMethod = function containerMultiMethod(container, writer) {
   for (var i = 0; i < c - 1; i++) {
     for (var j = i + 1; j < c; j++) {
       switch (Object.keys(container[i])[1]) {
-        case "shift":
+        case "replacement":
           switch (Object.keys(container[j])[1]) {
-            case "shift":
-              (0, _Writer.writeLine)(writer, "Are Shift and Shift");
+            case "replacement":
+              (0, _outFunc.replaceOut)(container, i, writer);
+              (0, _outFunc.replaceOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Replacement and Replacement"));
               break;
 
-            case "replacement":
-              (0, _Writer.writeLine)(writer, "Are Shift and Replacement");
+            case "shift":
+              (0, _outFunc.replaceOut)(container, i, writer);
+              (0, _outFunc.shiftOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Replacement and Shift"));
+              break;
+
+            case "replaceNumber":
+              (0, _outFunc.replaceOut)(container, i, writer);
+              (0, _outFunc.replaceNumberOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Replacement and ReplaceNumber"));
               break;
 
             default:
-              (0, _Writer.writeLine)(writer, "Are Unknown type");
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Unknown type"));
           }
 
           break;
 
-        case "replacement":
+        case "shift":
           switch (Object.keys(container[j])[1]) {
-            case "shift":
-              (0, _Writer.writeLine)(writer, "Are Replacement and Shift");
+            case "replacement":
+              (0, _outFunc.shiftOut)(container, i, writer);
+              (0, _outFunc.replaceOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Shift and Replacement"));
               break;
 
-            case "replacement":
-              (0, _Writer.writeLine)(writer, "Are Replacement and Replacement");
+            case "shift":
+              (0, _outFunc.shiftOut)(container, i, writer);
+              (0, _outFunc.shiftOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Shift and Shift"));
+              break;
+
+            case "replaceNumber":
+              (0, _outFunc.shiftOut)(container, i, writer);
+              (0, _outFunc.replaceNumberOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Shift and ReplaceNumber"));
               break;
 
             default:
-              (0, _Writer.writeLine)(writer, "Are Unknown type");
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Unknown type"));
+          }
+
+          break;
+
+        case "replaceNumber":
+          switch (Object.keys(container[j])[1]) {
+            case "replacement":
+              (0, _outFunc.replaceNumberOut)(container, i, writer);
+              (0, _outFunc.replaceOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are ReplaceNumber and Replacement"));
+              break;
+
+            case "shift":
+              (0, _outFunc.replaceNumberOut)(container, i, writer);
+              (0, _outFunc.shiftOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are ReplaceNumber and Shift"));
+              break;
+
+            case "replaceNumber":
+              (0, _outFunc.replaceNumberOut)(container, i, writer);
+              (0, _outFunc.replaceNumberOut)(container, j, writer);
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are ReplaceNumber and ReplaceNumber"));
+              break;
+
+            default:
+              (0, _Writer.writeLine)(writer, "Element ".concat(i, " and ").concat(j, " Are Unknown type"));
           }
 
           break;
