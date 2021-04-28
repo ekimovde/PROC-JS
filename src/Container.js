@@ -63,3 +63,40 @@ export const containerFilter = (container, i) => {
     return true;
   }
 };
+
+export const containerMultiMethod = (container, writer) => {
+  let c = container.length;
+  writeLine(writer, "MultiMethod");
+
+  for (let i = 0; i < c - 1; i++) {
+    for (let j = i + 1; j < c; j++) {
+      switch (Object.keys(container[i])[1]) {
+        case "shift":
+          switch (Object.keys(container[j])[1]) {
+            case "shift":
+              writeLine(writer, `Are Shift and Shift`);
+              break;
+            case "replacement":
+              writeLine(writer, `Are Shift and Replacement`);
+              break;
+            default:
+              writeLine(writer, `Are Unknown type`);
+          }
+          break;
+
+        case "replacement":
+          switch (Object.keys(container[j])[1]) {
+            case "shift":
+              writeLine(writer, `Are Replacement and Shift`);
+              break;
+            case "replacement":
+              writeLine(writer, `Are Replacement and Replacement`);
+              break;
+            default:
+              writeLine(writer, `Are Unknown type`);
+          }
+          break;
+      }
+    }
+  }
+};

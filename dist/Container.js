@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.containerFilter = exports.containerClear = exports.containerSort = exports.containerOutReplacement = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
+exports.containerMultiMethod = exports.containerFilter = exports.containerClear = exports.containerSort = exports.containerOutReplacement = exports.containerOut = exports.containerIn = exports.containerConst = void 0;
 
 var _Reader = require("./Reader");
 
@@ -83,3 +83,48 @@ var containerFilter = function containerFilter(container, i) {
 };
 
 exports.containerFilter = containerFilter;
+
+var containerMultiMethod = function containerMultiMethod(container, writer) {
+  var c = container.length;
+  (0, _Writer.writeLine)(writer, "MultiMethod");
+
+  for (var i = 0; i < c - 1; i++) {
+    for (var j = i + 1; j < c; j++) {
+      switch (Object.keys(container[i])[1]) {
+        case "shift":
+          switch (Object.keys(container[j])[1]) {
+            case "shift":
+              (0, _Writer.writeLine)(writer, "Are Shift and Shift");
+              break;
+
+            case "replacement":
+              (0, _Writer.writeLine)(writer, "Are Shift and Replacement");
+              break;
+
+            default:
+              (0, _Writer.writeLine)(writer, "Are Unknown type");
+          }
+
+          break;
+
+        case "replacement":
+          switch (Object.keys(container[j])[1]) {
+            case "shift":
+              (0, _Writer.writeLine)(writer, "Are Replacement and Shift");
+              break;
+
+            case "replacement":
+              (0, _Writer.writeLine)(writer, "Are Replacement and Replacement");
+              break;
+
+            default:
+              (0, _Writer.writeLine)(writer, "Are Unknown type");
+          }
+
+          break;
+      }
+    }
+  }
+};
+
+exports.containerMultiMethod = containerMultiMethod;

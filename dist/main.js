@@ -21,6 +21,7 @@ function main() {
     (0, _Container.containerSort)(container);
     (0, _Container.containerOut)(container, writer);
     (0, _Container.containerOutReplacement)(container, writer);
+    (0, _Container.containerMultiMethod)(container, writer);
     (0, _Container.containerClear)(container);
     (0, _Writer.writeLine)(writer, "Stop!");
     console.log("Stop");

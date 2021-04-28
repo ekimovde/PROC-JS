@@ -5,6 +5,7 @@ import {
   containerConst,
   containerClear,
   containerSort,
+  containerMultiMethod,
 } from "./Container";
 import { Reader, readerConst } from "./Reader";
 import { Writer, writerConst, writeLine, save } from "./Writer";
@@ -26,6 +27,7 @@ function main() {
     containerSort(container);
     containerOut(container, writer);
     containerOutReplacement(container, writer);
+    containerMultiMethod(container, writer);
     containerClear(container);
 
     writeLine(writer, "Stop!");
