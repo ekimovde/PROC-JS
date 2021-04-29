@@ -17,9 +17,10 @@ function main() {
   writeLine(writer, "Start!");
 
   let container = containerConst();
-  let reader = new Reader("in.txt", "", 0);
 
   try {
+    let reader = new Reader("in.txt", "", 0);
+
     readerConst("in.txt", reader);
     containerIn(container, reader);
     containerOut(container, writer);
@@ -34,7 +35,7 @@ function main() {
 
     save(writer);
   } catch (error) {
-    console.log(error);
+    console.log("Файла нет!");
   }
 }
 

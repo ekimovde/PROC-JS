@@ -12,9 +12,9 @@ function main() {
   (0, _Writer.writerConst)("out.txt", writer);
   (0, _Writer.writeLine)(writer, "Start!");
   var container = (0, _Container.containerConst)();
-  var reader = new _Reader.Reader("in.txt", "", 0);
 
   try {
+    var reader = new _Reader.Reader("in.txt", "", 0);
     (0, _Reader.readerConst)("in.txt", reader);
     (0, _Container.containerIn)(container, reader);
     (0, _Container.containerOut)(container, writer);
@@ -26,7 +26,7 @@ function main() {
     console.log("Stop");
     (0, _Writer.save)(writer);
   } catch (error) {
-    console.log(error);
+    console.log("Файла нет!");
   }
 }
 
