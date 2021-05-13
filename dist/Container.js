@@ -22,7 +22,9 @@ var containerConst = function containerConst() {
 
 exports.containerConst = containerConst;
 
-var containerIn = function containerIn(container, reader) {
+var containerIn = function containerIn(reader) {
+  var container = [];
+
   while (!(0, _Reader.fileEmpty)(reader)) {
     var tmp = (0, _Reader.readLine)(reader);
 
@@ -32,6 +34,8 @@ var containerIn = function containerIn(container, reader) {
       console.log("Ошибка в файле!");
     }
   }
+
+  return container;
 };
 
 exports.containerIn = containerIn;
@@ -72,6 +76,7 @@ exports.containerSort = containerSort;
 
 var containerClear = function containerClear(container) {
   container = [];
+  return container;
 };
 
 exports.containerClear = containerClear;
@@ -79,6 +84,8 @@ exports.containerClear = containerClear;
 var containerFilter = function containerFilter(container, i) {
   if (Object.keys(container[i])[1] === "replacement") {
     return true;
+  } else {
+    return false;
   }
 };
 

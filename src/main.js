@@ -22,12 +22,12 @@ function main() {
     let reader = new Reader("in.txt", "", 0);
 
     readerConst("in.txt", reader);
-    containerIn(container, reader);
+    container = containerIn(reader);
     containerOut(container, writer);
     containerSort(container);
     containerOut(container, writer);
     containerOutReplacement(container, writer);
-    containerClear(container);
+    let arr = containerClear(container);
 
     writeLine(writer, "Stop!");
 

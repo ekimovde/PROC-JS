@@ -10,7 +10,9 @@ export const containerConst = () => {
   return container;
 };
 
-export const containerIn = (container, reader) => {
+export const containerIn = (reader) => {
+  let container = [];
+
   while (!fileEmpty(reader)) {
     let tmp = readLine(reader);
 
@@ -20,6 +22,8 @@ export const containerIn = (container, reader) => {
       console.log("Ошибка в файле!");
     }
   }
+
+  return container;
 };
 
 export const containerOut = (container, writer) => {
@@ -56,10 +60,14 @@ export const containerSort = (container) => {
 
 export const containerClear = (container) => {
   container = [];
+
+  return container;
 };
 
 export const containerFilter = (container, i) => {
   if (Object.keys(container[i])[1] === "replacement") {
     return true;
+  } else {
+    return false;
   }
 };
