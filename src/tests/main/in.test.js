@@ -1,12 +1,11 @@
 const { containerIn } = require("../../Container");
-let { Reader } = require("../../Reader");
+let { Reader, readerConst } = require("../../Reader");
 
 describe("In function:", () => {
   let reader = new Reader("in.txt", "", 0);
-  let array;
 
   beforeEach(() => {
-    array = [];
+    readerConst("in.txt", reader);
   });
 
   test("Should by defined:", () => {
@@ -31,7 +30,7 @@ describe("In function:", () => {
       { text: "Кот", shift: 2, decodedText: "Мрф", name: "Vadim" },
     ];
 
-    // expect(containerIn(reader)).toBe(result);
+    expect(containerIn(reader)).toEqual(result);
   });
 
   test("Should check for the content:", () => {
