@@ -28,7 +28,7 @@ export const containerIn = (reader) => {
 
 export const containerOut = (container, writer) => {
   let c = container.length;
-  writeLine(writer, `Container contains: ${c}, elements!`);
+  // writeLine(writer, `Container contains: ${c}, elements!`);
 
   if (c > 0)
     for (let i = 0; i < c; i++) {

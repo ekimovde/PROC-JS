@@ -1,30 +1,38 @@
 const { containerOut } = require("../../Container");
-let { Writer } = require("../../Writer");
+let { Writer, writerConst, save } = require("../../Writer");
+import { Reader, readerConst, readLine } from "../../Reader";
 
 describe("In function:", () => {
-  let writer = new Writer("out.txt");
-  let array = [];
+  let writer;
+  let reader;
+  let dataOut = [
+    {
+      text: "гl",
+      replaceNumber: "[г->5]-[l->3]",
+      decodedText: "53",
+      name: "Denis",
+    },
+    {
+      text: "Аб",
+      replacement: "[А->б]-[б->а]",
+      decodedText: "ба",
+      name: "Vlad",
+    },
+    { text: "Кот", shift: 2, decodedText: "Мрф", name: "Vadim" },
+  ];
 
-  test("Should by defined:", () => {
-    expect(containerOut(array, writer)).toBeDefined();
-    expect(containerOut(array, writer)).not.toBeUndefined();
+  beforeEach(() => {
+    writer = new Writer("out.txt", "");
+    writerConst("out.txt", writer);
+    reader = new Reader("out.txt", "", 0);
+    readerConst("out.txt", reader);
   });
 
   test("Should check the input function:", () => {
-    let result = [
-      "ReplaceNumber: [г->5]-[l->3], DecodedText: 53",
-      "Replacement: [А->б]-[б->а], DecodedText: ба",
-      "Shift: 2, DecodedText: Мрф",
-    ];
-
-    // expect(containerOut(array, writer)).toEqual(result);
-  });
-
-  test("Should check for the content:", () => {
-    expect(containerOut(array, writer)).not.toContain();
-    expect(containerOut(array, writer)).not.toContain(null);
-    expect(containerOut(array, writer)).not.toContain(false);
-    expect(containerOut(array, writer)).not.toContain(true);
-    expect(containerOut(array, writer)).not.toContain("");
+    let result =
+      "Text: гl, Name: Denis, Length: 2, ReplaceNumber: [г->5]-[l->3], DecodedText: 53";
+    containerOut(dataOut, writer);
+    save(writer);
+    expect(readLine(reader)).toEqual(result);
   });
 });

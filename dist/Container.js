@@ -41,8 +41,8 @@ var containerIn = function containerIn(reader) {
 exports.containerIn = containerIn;
 
 var containerOut = function containerOut(container, writer) {
-  var c = container.length;
-  (0, _Writer.writeLine)(writer, "Container contains: ".concat(c, ", elements!"));
+  var c = container.length; // writeLine(writer, `Container contains: ${c}, elements!`);
+
   if (c > 0) for (var i = 0; i < c; i++) {
     (0, _funcText.outText)(container, i, writer);
   }
